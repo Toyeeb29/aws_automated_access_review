@@ -84,9 +84,6 @@ CloudWatch Events (30-day schedule)
 | Report Storage | Amazon S3 |
 | Email Delivery | Amazon SES |
 | Scheduling | Amazon CloudWatch Events |
-| Testing | pytest, moto, pytest-mock |
-| Linting | flake8, black |
-| IaC Linting | cfn-lint |
 
 ---
 
@@ -95,16 +92,9 @@ CloudWatch Events (30-day schedule)
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/aws_automated_access_review.git
+git clone https://github.com/Toyeeb29/aws_automated_access_review.git
 cd aws_automated_access_review
 ```
-
-> **Note:** If forking from the upstream repo, add it as a remote:
-> ```bash
-> git remote add upstream https://github.com/ajy0127/aws_automated_access_review.git
-> git fetch upstream
-> git merge upstream/main
-> ```
 
 ### 2. Create and Activate a Virtual Environment
 
