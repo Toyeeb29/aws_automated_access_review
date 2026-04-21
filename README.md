@@ -127,7 +127,7 @@ Expected output confirms access to:
 - ✅ Amazon Bedrock
 
 ![Valid AWS Credentials Output](<img width="384" height="171" alt="Valid Credentials Output" src="https://github.com/user-attachments/assets/0b8796c1-dff3-4eea-ab31-fef557d3b0b5" />
-)
+)!
 
 ### 5. Verify Your Email with SES
 
@@ -171,7 +171,7 @@ aws cloudformation describe-stacks \
 Expected: `"UPDATE_COMPLETE"` or `"CREATE_COMPLETE"`
 
 ![Deployment Complete Output](<img width="592" height="176" alt="deployment complete output" src="https://github.com/user-attachments/assets/5e2f2ca2-30f4-44db-a8a3-6d32a126e62d" />
-)
+)!
 
 ---
 
