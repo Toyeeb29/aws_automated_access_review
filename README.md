@@ -397,13 +397,7 @@ Or view in the AWS Console via CloudWatch Logs.
 
 ---
 
-## License
 
-This project is intended for educational and GRC (Governance, Risk & Compliance) lab purposes.Chocolatey `zip` binary as a workaround (see above).
-- **SSO Profiles:** Named AWS SSO profiles may require re-authentication. Default IAM credentials work reliably with the credential check script.
-- **First Deployment:** SES email verification must be completed before the Lambda function can deliver reports.
-
----
 
 ## License
 
