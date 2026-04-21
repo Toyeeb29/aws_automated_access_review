@@ -84,6 +84,9 @@ CloudWatch Events (30-day schedule)
 | Report Storage | Amazon S3 |
 | Email Delivery | Amazon SES |
 | Scheduling | Amazon CloudWatch Events |
+| Testing | pytest, moto, pytest-mock |
+| Linting | flake8, black |
+| IaC Linting | cfn-lint |
 
 ---
 
@@ -92,9 +95,16 @@ CloudWatch Events (30-day schedule)
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Toyeeb29/aws_automated_access_review.git
+git clone https://github.com/YOUR_USERNAME/aws_automated_access_review.git
 cd aws_automated_access_review
 ```
+
+> **Note:** If forking from the upstream repo, add it as a remote:
+> ```bash
+> git remote add upstream https://github.com/ajy0127/aws_automated_access_review.git
+> git fetch upstream
+> git merge upstream/main
+> ```
 
 ### 2. Create and Activate a Virtual Environment
 
@@ -125,6 +135,8 @@ Expected output confirms access to:
 - ✅ IAM Access Analyzer
 - ✅ Amazon SES
 - ✅ Amazon Bedrock
+
+![Valid AWS Credentials Output](assets/Valid_Credentials_Output.png)
 
 ### 5. Verify Your Email with SES
 
@@ -166,6 +178,8 @@ aws cloudformation describe-stacks \
 ```
 
 Expected: `"UPDATE_COMPLETE"` or `"CREATE_COMPLETE"`
+
+![Deployment Complete Output](assets/deployment_complete_output.png)
 
 ---
 
@@ -317,6 +331,26 @@ Remediating the two high-priority findings will restore compliance readiness acr
 
 > The full findings are available as a CSV file stored in the S3 report bucket generated during deployment.
 
+[📄 Download Sample CSV Report](assets/aws-access-review-2026-04-21-16-31-43.csv)
+
+### Raw Findings (CSV)
+
+| ID | Category | Severity | Resource Type | Resource ID | Description | Recommendation | Compliance |
+|----|----------|----------|---------------|-------------|-------------|----------------|------------|
+| IAM-002-AKIAWWXFC3ZSC6YCF6EA | IAM | Medium | IAM Access Key | fikayo/AKIAWWXFC3ZSC6YCF6EA | Access key is 105 days old | Rotate keys every 90 days | CIS 1.4, AWS Well-Architected |
+| IAM-002-AKIAWWXFC3ZSEELS7QFE | IAM | Medium | IAM Access Key | fikayo/AKIAWWXFC3ZSEELS7QFE | Access key is 105 days old | Rotate keys every 90 days | CIS 1.4, AWS Well-Architected |
+| IAM-003-fikayo | IAM | Medium | IAM User | fikayo | User has wide privileges via AdministratorAccess | Apply least privilege principle | CIS 1.16, AWS Well-Architected |
+| IAM-002-AKIAWWXFC3ZSJUKAKK5K | IAM | Medium | IAM Access Key | Imran/AKIAWWXFC3ZSJUKAKK5K | Access key is 100 days old | Rotate keys every 90 days | CIS 1.4, AWS Well-Architected |
+| IAM-003-Imran | IAM | Medium | IAM User | Imran | User has wide privileges via AdministratorAccess | Apply least privilege principle | CIS 1.16, AWS Well-Architected |
+| IAM-001-test-console-user | IAM | **High** | IAM User | test-console-user | Console access without MFA | Enable MFA for all console users | CIS 1.2, AWS Well-Architected |
+| IAM-005 | IAM | Medium | IAM Password Policy | account-password-policy | Password policy does not meet best practices | Require 14+ characters with mixed types | CIS 1.5–1.11, AWS Well-Architected |
+| SCP-001 | SCP | Medium | Service Control Policy | none | No custom SCPs detected | Implement SCPs for security guardrails | AWS Well-Architected |
+| SECHUB-POSITIVE-001 | SecurityHub | Informational | AWS Security Hub | none | No high/critical IAM findings detected | Continue monitoring | AWS Well-Architected |
+| AA-7b108fad | Access Analyzer | Medium | Unknown | Unknown | External access may not be intended | Review and restrict permissions | AWS Well-Architected, CIS AWS Foundations |
+| CT-NOT-ENABLED | CloudTrail | **High** | AWS CloudTrail | none | CloudTrail is not enabled | Enable CloudTrail to track API activity | AWS Well-Architected |
+
+**Detection Date:** 2026-04-21 · **Total Findings:** 11 · **High:** 2 · **Medium:** 8 · **Informational:** 1
+
 ---
 
 ## Troubleshooting
@@ -362,6 +396,14 @@ Or view in the AWS Console via CloudWatch Logs.
 ## Known Issues
 
 - **Git Bash on Windows:** The `zip` binary bundled with Git Bash may fail due to missing shared libraries. Use the Chocolatey `zip` binary as a workaround (see above).
+- **SSO Profiles:** Named AWS SSO profiles may require re-authentication. Default IAM credentials work reliably with the credential check script.
+- **First Deployment:** SES email verification must be completed before the Lambda function can deliver reports.
+
+---
+
+## License
+
+This project is intended for educational and GRC (Governance, Risk & Compliance) lab purposes.Chocolatey `zip` binary as a workaround (see above).
 - **SSO Profiles:** Named AWS SSO profiles may require re-authentication. Default IAM credentials work reliably with the credential check script.
 - **First Deployment:** SES email verification must be completed before the Lambda function can deliver reports.
 
