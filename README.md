@@ -84,9 +84,6 @@ CloudWatch Events (30-day schedule)
 | Report Storage | Amazon S3 |
 | Email Delivery | Amazon SES |
 | Scheduling | Amazon CloudWatch Events |
-| Testing | pytest, moto, pytest-mock |
-| Linting | flake8, black |
-| IaC Linting | cfn-lint |
 
 ---
 
@@ -95,16 +92,9 @@ CloudWatch Events (30-day schedule)
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/aws_automated_access_review.git
+git clone https://github.com/Toyeeb29/aws_automated_access_review.git
 cd aws_automated_access_review
 ```
-
-> **Note:** If forking from the upstream repo, add it as a remote:
-> ```bash
-> git remote add upstream https://github.com/ajy0127/aws_automated_access_review.git
-> git fetch upstream
-> git merge upstream/main
-> ```
 
 ### 2. Create and Activate a Virtual Environment
 
@@ -136,7 +126,8 @@ Expected output confirms access to:
 - ✅ Amazon SES
 - ✅ Amazon Bedrock
 
-![Valid AWS Credentials Output](assets/Valid_Credentials_Output.png)
+![Valid AWS Credentials Output](<img width="384" height="171" alt="Valid Credentials Output" src="https://github.com/user-attachments/assets/0b8796c1-dff3-4eea-ab31-fef557d3b0b5" />
+)
 
 ### 5. Verify Your Email with SES
 
@@ -179,7 +170,8 @@ aws cloudformation describe-stacks \
 
 Expected: `"UPDATE_COMPLETE"` or `"CREATE_COMPLETE"`
 
-![Deployment Complete Output](assets/deployment_complete_output.png)
+![Deployment Complete Output](<img width="592" height="176" alt="deployment complete output" src="https://github.com/user-attachments/assets/5e2f2ca2-30f4-44db-a8a3-6d32a126e62d" />
+)
 
 ---
 
@@ -411,4 +403,4 @@ This project is intended for educational and GRC (Governance, Risk & Compliance)
 
 ## License
 
-This project is intended for educational and GRC (Governance, Risk & Compliance) lab purposes.
+This project is intended for educational and GRC (Governance, Risk & Compliance) engineering lab purposes.
