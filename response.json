@@ -1,0 +1,1 @@
+{"statusCode": 200, "body": "\"AWS Access Review completed successfully\"", "reportDetails": {"timestamp": "2026-04-21-16-31-43", "bucket": "aws-access-review-reportbucket-mt4s3wlcaqof", "key": "reports/aws-access-review-2026-04-21-16-31-43.csv", "findingsCount": 11}}
